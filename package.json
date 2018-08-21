@@ -2,7 +2,7 @@
   "name": "npm-batch-update-outdated",
   "description": "Batch Update your NPM dependencies",
   "main": "index.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yves Le Maout <y.lemaout@gmail.com>",
   "license": "MIT",
   "private": false,
