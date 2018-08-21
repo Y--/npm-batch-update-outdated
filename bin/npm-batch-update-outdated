@@ -1,9 +1,9 @@
-/* eslint-disable no-console */
+#!/usr/bin/env node
 'use strict';
 
-const utils = require('./lib/utils');
-const packages = require('./lib/packages');
-const { editTable } = require('./lib/edit-table');
+const utils = require('../lib/utils');
+const packages = require('../lib/packages');
+const { editTable } = require('../lib/edit-table');
 
 (async function main() {
   const { dir = '', accept = false, help = false } = utils.readProcessArguments(['accept:a', 'dir', 'help']);

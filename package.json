@@ -1,7 +1,6 @@
 {
   "name": "npm-batch-update-outdated",
   "description": "Batch Update your NPM dependencies",
-  "main": "index.js",
   "version": "0.0.2",
   "author": "Yves Le Maout <y.lemaout@gmail.com>",
   "license": "MIT",
@@ -10,6 +9,9 @@
     "lint": "eslint '**/*.js'",
     "release": "npm version patch && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "npm-batch-update-outdated": "./bin/npm-batch-update-outdated"
   },
   "repository": {
     "type": "git",
