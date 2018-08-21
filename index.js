@@ -1,0 +1,42 @@
+/* eslint-disable no-console */
+'use strict';
+
+const utils = require('./lib/utils');
+const packages = require('./lib/packages');
+const { editTable } = require('./lib/edit-table');
+
+(async function main() {
+  const { dir = '', accept = false, help = false } = utils.readProcessArguments(['accept:a', 'dir', 'help']);
+
+  if (help) {
+    return displayHelp();
+  }
+
+  const projectDir = utils.normalizeDir(dir);
+  console.log('Updates in', projectDir);
+  const outdated = await packages.fetchOutdated(projectDir);
+  const currents = packages.fetchCurrent(projectDir);
+
+  const normalizedUpgrades = packages.normalizeUpgrades(currents, outdated);
+  if (!accept) {
+    const filtered = await editTable([['Package', 'From', 'To']].concat(normalizedUpgrades.allUpgrades));
+    packages.filterNormalizedUpgrades(normalizedUpgrades, filtered);
+    console.log('\n');
+  }
+
+  packages.displayUpgrades(normalizedUpgrades);
+
+  const apply = await utils.promptYNQuestion('Do you want to apply the following changes? (y/N) ');
+  if (apply) {
+    return packages.applyUpgrade(projectDir, normalizedUpgrades);
+  }
+
+  console.log('Aborted');
+})();
+
+function displayHelp() {
+  console.log(`Usage: ${process.argv.slice(0, 2).join(' ')} [--accept] [--dir=working/directory] [--help]`);
+  console.log('  --accept: bypass individual version edition');
+  console.log('  --dir:    set the working directory');
+  console.log('  --help:   display this message');
+}

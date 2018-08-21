@@ -1,0 +1,30 @@
+{
+  "name": "npm-batch-update-outdated",
+  "description": "Batch Update your NPM dependencies",
+  "main": "index.js",
+  "version": "0.0.1",
+  "author": "Yves Le Maout <y.lemaout@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "lint": "eslint '**/*.js'",
+    "release": "npm version patch && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Y--/npm-batch-update-outdated.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Y--/npm-batch-update-outdated/issues"
+  },
+  "dependencies": {
+    "semver": "^5.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-stoic": "github:sutoiku/eslint-plugin-stoic#v4.2.0",
+    "prettier": "^1.14.2"
+  }
+}
