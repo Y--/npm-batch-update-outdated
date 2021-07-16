@@ -1,8 +1,2 @@
-/dist
 /node_modules
-
-/checkstyle.xml
-/package-lock.json
-
 .DS_Store
-*.generated.*
